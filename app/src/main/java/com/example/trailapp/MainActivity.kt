@@ -15,11 +15,16 @@ import com.example.trailapp.ui.theme.TrailAppTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+        super.onCreate(savedInstanceState) // Przy nadpisywaniu najpierw odpalamy bazowy onCreate
         enableEdgeToEdge()
         setContent {
             TrailAppTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
+                    /*  Ta funkcja podawana po Scaffold to
+                        content: @Composable ((PaddingValues) -> Unit)
+                        czyli innerPadding to parametr typu PaddingValues,
+                        który obliczany jest podczas wykonywania Scaffold()
+                        i potem podawany do funkcji strzałkowej. */
                     Greeting(
                         name = "Android",
                         modifier = Modifier.padding(innerPadding)
